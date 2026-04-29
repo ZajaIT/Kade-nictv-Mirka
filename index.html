@@ -252,6 +252,9 @@ header p {
     section h2 span {
       color: var(--gold);
     }
+    .mobile-break {
+  display: none;
+}
 
 #about h2 span {
   color: white;
@@ -894,6 +897,10 @@ section#contact {
   top: 50%;
   transform: translateY(-40%);
 }
+
+.mobile-break {
+  display: block;
+}    
            
 }
 
@@ -973,7 +980,10 @@ section#contact {
 
   <!-- About -->
   <section id="about">
-  <h2>Vaše krása <span>v dobrých rukou</span></h2>
+  <h2>
+  Vaše krása <br class="mobile-break">
+  <span>v dobrých rukou</span>
+</h2>
 
   <div class="about">
     <div class="about-text">
