@@ -1,0 +1,1584 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kadeřnický salon Elegance</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+
+html, body {
+    overflow-x: hidden; /* zakáže horizontální posuvník */
+  }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+/* Plynulý scroll po celé stránce */
+html {
+  scroll-behavior: smooth;
+}
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: #ffffff;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    :root {
+  --gold: #5BC0DE;
+  --dark: #222;
+}
+
+    /* Header */
+    header {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+
+  background: url("svatebni-uces-ceska-lipa.png") center/cover no-repeat;
+  overflow: hidden;
+
+  animation: headerZoom 5s ease forwards; /* jemný zoom-in */
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,1); /* start tmavý - dělá efekt z ničeho */
+  animation: overlayFade 5s ease forwards;
+  z-index: 0;
+}
+
+/* Text a tlačítko nad overlay */
+/* Text a tlačítko nad overlay s jemným zpožděním */
+/* Text a tlačítko nad overlay - synchronizované s overlay animací */
+/* Text a tlačítko nad overlay - synchronizované s obrázkem */
+header h1, header p, .btn {
+  position: relative;
+  z-index: 1;
+
+  opacity: 0;
+  transform: scale(0.97);
+  animation: textZoomFade 2.5s ease forwards;  /* plynulá animace */
+  animation-delay: 0.4s;  /* jemné zpoždění od startu overlay */
+}
+
+/* Fade + jemný zoom pro text */
+@keyframes textZoomFade {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Plynulá fade-in animace overlay */
+@keyframes overlayFade {
+  from { background-color: rgba(0,0,0,1); }  /* úplně tmavý */
+  to   { background-color: rgba(0,0,0,0.3); } /* konečný lehký gradient */
+}
+
+/* Jemný zoom-in obrázku */
+@keyframes headerZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); } /* mírné přiblížení pro dynamiku */
+}
+
+/* Header texty */
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+header h1 span {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+header p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+    .btn {
+      padding: 12px 25px;
+      border: 2px solid var(--gold);
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    /* Navigation */
+    nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.nav-phone {
+  position: absolute;
+  left: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+}
+
+    
+
+.nav-social {
+    position: absolute;       /* uvnitř navbaru */
+    right: 30px;               /* přesun doleva */
+    top: 50%;                 /* vertikálně uprostřed pruhu */
+    transform: translateY(-40%);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-social a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--gold);
+}
+
+.social {
+  color: var(--gold);
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.social:hover {
+  color: var(--dark);
+}
+
+.nav-social svg {
+  width: 24px;  /* velikost ikonky */
+  height: 24px; /* výška */
+  fill: var(--gold);
+  transition: fill 0.3s ease;
+}
+
+.nav-social a:hover svg {
+  fill: var(--dark);
+}
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+.phone {
+  color: var(--gold);
+}
+
+.phone:hover {
+  color: var(--dark);
+}
+
+    nav a:hover {
+      color: var(--gold);
+    }
+    .nav-menu a.active {
+  color: var(--gold);
+}
+
+    /* Sections */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+#gallery {
+  max-width: none;
+  padding: 80px 0;
+}
+
+#about {
+  background: #5BC0DE;
+  border-radius: 8px;
+  margin-top: -20px; /* POSUN NAHORU */
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+    section h2 {
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: var(--dark);
+    }
+
+    section h2 span {
+      color: var(--gold);
+    }
+
+#about h2 span {
+  color: white;
+}
+
+#about h2 {
+  color: #000;
+}
+
+    /* About */
+    .about {
+  text-align: center;
+  max-width: 1000px;   /* víc prostoru */
+  margin: auto;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+}
+
+/* Fotka ve sekci O salonu – zmenšená */
+.about-img {
+  display: block;
+  margin: 20px auto;
+  width: 240px;
+  height: 240px;
+}
+
+    /* Gallery */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+    
+    .gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+
+  transition: transform 0.35s ease; /* pro plynulý zoom */
+  position: relative;              /* potřeba pro overlay */
+  z-index: 1;
+}
+
+
+.gallery .img-wrapper {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  position: relative; 
+}
+
+.gallery .img-wrapper:nth-last-child(2) img {
+  object-position: 0% top;
+}
+
+.gallery .img-wrapper:last-child img {
+  object-position: 70% top;
+}
+
+/* samotný overlay */
+.gallery .img-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(201, 161, 74, 0); 
+  transition: background 0.35s ease;
+  z-index: 2;
+}
+
+.gallery .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+
+.gallery .img-wrapper:hover img {
+  transform: scale(1.06);
+}
+
+.gallery .img-wrapper:hover::after {
+  background: rgba(201, 161, 74, 0.25); 
+}
+
+.gallery img-wrapper:hover::after {
+  background: rgba(201, 161, 74, 0.25); 
+}
+
+
+.cosmetic-item img {
+  width: 100%;
+  max-width: 250px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+.cosmetics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: center;
+}
+
+.accordion-btn {
+  width: 100%;
+  text-align: left;
+  padding: 18px 15px 18px 40px; /* místo na šipku vlevo */
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000;
+  transition: 0.3s;
+  position: relative;
+}
+
+.accordion-btn:hover {
+  color: var(--gold);
+  position: relative;
+  padding-right: 30px;
+}
+
+.accordion-btn::after {
+  content: "▶";
+  position: absolute;
+  left: 10px;   /* 🔥 vlevo místo vpravo */
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  color: inherit;
+}
+
+.accordion-btn.active::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.accordion-btn.active {
+  color: var(--gold);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 20px;
+}
+
+.accordion-btn.active + .accordion-content {
+  padding: 15px 20px 20px 20px;
+}
+
+/* vnitřní obsah */
+.accordion-content ul,
+.accordion-content p {
+  margin: 0;
+}
+
+/* přidej mezeru mezi řádky seznamu */
+.accordion-content li {
+  margin-bottom: 8px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.keratin-info {
+  margin-top: 50px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f8f8f8, #ffffff);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.keratin-info h3 {
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Tabs */
+.price-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--gold);
+  background: white;
+  color: var(--dark);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  border-radius: 15px;
+}
+
+.tab-btn:hover {
+  background: #f0f0f0;
+}
+
+.tab-btn.active {
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 4px 12px rgba(91,192,222,0.4); /* jemná záře */
+  font-weight: 700;
+}
+
+/* Content */
+.price-content {
+  max-width: 600px;
+  margin: auto;
+  display: none;
+}
+
+.price-content.active {
+  display: block;
+}
+
+
+/* Výchozí stav nadpisů všech sekcí */
+section h2 {
+  opacity: 0;                     /* neviditelné */
+  transform: translateX(-100px);  /* posun zleva */
+  transition: opacity 1s ease, transform 1s ease; /* stejné jako galerie */
+}
+
+/* Po přidání třídy .animate se nadpis objeví */
+section.animate h2 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+    /* Price list */
+    .price-list {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      font-weight: 500;
+    }
+
+section#contact {
+  margin: auto;
+  padding: 0;
+  scroll-margin-top: 56px;
+
+  position: relative; /* 🔥 důležité */
+}
+
+.contact-bg {
+  background: var(--gold);
+  max-width: 1100px;
+  margin: -20px auto -20px auto; /* 👈 důležité */
+  padding: 60px 20px;
+
+  border-radius: 8px;
+  position: relative;
+  z-index: 2; /* 👈 zůstane nad footerem */
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.form-title {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+  text-transform: uppercase;
+
+  max-width: 400px;     
+  width: 100%;
+  text-align: center;   
+}
+
+/* vnitřní wrapper */
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* NADPIS */
+.contact-title {
+  text-align: center;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.contact-title span {
+  color: #fff;
+}
+
+/* GRID (info + formulář) */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+/* INFO BLOK */
+.contact-info {
+  color: #000;
+  line-height: 1.8;
+  padding-left: 100px;
+}
+
+.contact-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.contact-person {
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  margin-bottom: 15px;
+}
+
+
+.contact-item a {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+.contact-item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--dark);
+  transition: width 0.3s ease;
+}
+
+/* hover efekt */
+.contact-item a:hover::after {
+  width: 100%;
+}
+
+/* FORM BOX (bílý) */
+.contact-form-box {
+  background: transparent;  
+  padding: 0;               
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* FORM – NECHÁVÁME TVŮJ STYLE */
+.contact-form {
+  max-width: 400px; 
+  margin: 0;   
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+  resize: none;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.contact-form button {
+  background: white;
+  border: none;
+  color: #000;
+  padding: 12px 25px;   /* 👈 menší a hezčí poměr */
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+
+  width: auto;          /* 👈 klíčové */
+  align-self: center;
+}
+
+.contact-form button:hover {
+  background: #f2f2f2; /* jemně šedá */
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form button:focus {
+  outline: 2px solid #222;
+  outline-offset: 0;
+  border-radius: 5px;
+}
+
+.contact-form input:not(:placeholder-shown),
+.contact-form textarea:not(:placeholder-shown) {
+  outline: 2px solid #222;
+  outline-offset: 0;
+  border-radius: 5px;
+}
+
+/* MAPA */
+.map {
+  margin-top: 50px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+    /* Footer */
+    footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 60px 20px 20px; /* 👈 víc prostoru nahoře */
+  font-size: 0.9rem;
+  margin-top: -20px;  /* 👈 posune footer pod box */
+  position: relative;
+  z-index: 1;
+}
+    
+    /* chybová hláška */
+.contact-form .error-msg {
+  display: none;
+  font-size: 0.85rem;
+  color: #b00020;
+  margin-top: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contact-form input.error,
+.contact-form textarea.error {
+  border-color: #b00020;
+}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+    }
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.contact-inner .contact-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.contact-inner .contact-row svg {
+  width: 20px;
+  height: 20px;
+  fill: #000; /* černé */
+  flex-shrink: 0;
+  margin-top: 3px; /* jemné doladění */
+}
+
+    @media (max-width: 768px) {
+
+  /* Změny headeru a navbaru pro mobil */
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  nav {
+    padding: 30px 0; /* výška pruhu */
+  }
+
+  .nav-phone {
+    display: none; /* telefon zmizí jen na mobilu */
+  }
+
+  /* Mobilní menu */
+  .nav-menu {
+    flex-direction: column;
+    display: flex;
+    align-items: center;        /* položky horizontálně uprostřed */
+    justify-content: center;    /* vertikálně uprostřed */
+    padding-top: 20px;          /* prostor nad Úvod */
+    padding-bottom: 20px;       /* prostor pod Kontakt */
+    background: white;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+    z-index: 999;
+  }
+
+  .nav-menu.show {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  .nav-menu a {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Úvod – aktivní barva nechceme, jen hover */
+  .nav-menu a[href="#home"] {
+    color: var(--dark);
+  }
+
+  .nav-menu a[href="#home"]:hover {
+    color: var(--gold);
+  }
+
+  /* Ostatní položky aktivní */
+  .nav-menu a:not([href="#home"]).active {
+    color: var(--gold);
+  }
+
+  /* Hamburger ikona */
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: var(--dark);
+    border-radius: 5px;
+    transition: 0.4s;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Sociální ikony – mobil */
+  .nav-social {
+    left: 15px;
+    top: 50%;
+    transform: translateY(-40%);
+  }
+
+  .nav-social a:nth-child(1) svg { width: 30px; height: 30px; } /* Facebook */
+  .nav-social a:nth-child(2) svg { width: 24px; height: 24px; } /* Instagram */
+  .nav-social a:nth-child(3) svg { width: 24px; height: 24px; } /* WhatsApp */
+
+  /* Header pozice pro mobil */
+  header {
+    background-position: center top;
+    margin-top: -50px;
+  }
+
+  body.menu-open,
+  html.menu-open {
+    overflow: hidden;
+  }
+
+#about {
+  margin-top: -40px; /* menší overlap na mobilu */
+}
+
+.gallery {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-grid {
+    grid-template-columns: 1fr;
+  }
+           
+}
+
+@media (min-width: 768px) {
+
+  .about {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+  }
+
+  .about-img {
+    margin: 0;
+    flex-shrink: 0;
+    order: -1;
+  }
+
+.cosmetics {
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+  }
+
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+  <div class="nav-phone">
+  <a href="tel:+420732264785" class="phone">
+    <!-- Elegantní linková ikonka sluchátka -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.1-.21c1.2.48 2.5.74 3.85.74a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.94 21 3 14.06 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.35.26 2.65.74 3.85a1 1 0 0 1-.21 1.1l-2.2 2.2z"/>
+    </svg>
+    +420 732 264 785
+  </a>
+</div>
+
+  <div class="nav-menu">
+    <a href="#home">Úvod</a>
+    <a href="#about">O nás</a>
+    <a href="#cosmetics">Kosmetika</a>
+    <a href="#gallery">Galerie</a>
+    <a href="#prices">Ceník</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+
+    <div class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="nav-social">
+  <a href="https://www.facebook.com/mirkakadernictvi/" target="_blank" class="social">
+    
+    <!-- Facebook ikonka -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M22 12a10 10 0 1 0-11.5 9.87v-6.99h-2v-2.88h2V9.41c0-2 1.2-3.1 3-3.1.87 0 1.78.15 1.78.15v1.96h-1c-1 0-1.3.63-1.3 1.27v1.53h2.21l-.35 2.88h-1.86v6.99A10 10 0 0 0 22 12z"/>
+    </svg>
+
+    <span>Facebook</span>
+  </a>
+</div>
+
+</nav>
+
+  <!-- Hero -->
+  <header id="home">
+    <h1>KADEŘNICTVÍ <span>MIRKA</span></h1>
+    <p>Kadeřnické služby, svatební a společenské účesy v České Lípě</p>
+    <a href="#contact" class="btn">Objednat se</a>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+  <h2>Vaše krása <span>v dobrých rukou</span></h2>
+
+  <div class="about">
+    <div class="about-text">
+  <p>
+    Naše Kadeřnictví Mirka je orientováno zejména pro zákaznice a zákazníky z České Lípy a okolí. 
+    Třicetiletá praxe v oboru a specializované pracoviště Vám zajistí profesionální péči o vaše vlasy.
+  </p>
+
+  <p>
+    Využíváme zejména vlasovou kosmetiku DUSY a BEOX brazilský keratin. 
+    Specializujeme se také na svatební, společenské i maturitní účesy, 
+    kde klademe důraz na detail, eleganci a individuální přístup ke každé zákaznici.
+  </p>
+</div>
+
+<img 
+  src="mirka-tusinska-kadernice.png" 
+  alt="Kadeřnice Mirka Tušinská" 
+  class="about-img"
+  loading="lazy"
+>
+  </div>
+</section>
+
+<section id="cosmetics">
+  <h2>Vlasová <span>kosmetika</span></h2>
+
+  <div class="cosmetics">
+
+  <div class="cosmetic-item">
+    <img src="beox-keratin.jpg" alt="Brazilský keratin BEOX">
+    <h3>Brazilský keratin BEOX</h3>
+    <p>
+      Dopřejte si luxusní brazilské keratinové ošetření od Beox Professional. 
+      Navraťte svým vlasům vitalitu a mladistvý vzhled s našimi 100% efektivními 
+      a spolehlivými přírodními produkty bez obsahu formaldehydu.
+    </p>
+  </div>
+
+  <div class="cosmetic-item">
+    <img src="dussy-professional.png" alt="DUSY PROFESSIONAL">
+    <h3>DUSY PROFESSIONAL</h3>
+    <p>
+      DUSY Professional nabízí komplexní péči o zdraví, krásu a dokonalý styling. 
+      Výrobky DUSY jsou charakteristické vysokou kvalitou za bezkonkurenční ceny. 
+      Spolehlivá a cenově příznivá alternativa pro denní používání v salonech.
+    </p>
+  </div>
+
+</div>
+
+<div class="keratin-info">
+  <h3>Keratinové ošetření – více informací</h3>
+
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-btn">
+        Výhody keratinové péče
+      </button>
+      <div class="accordion-content">
+        <ul>
+          <li>Okamžitý výsledek</li>
+          <li>Zdravé, lesklé a hladké vlasy</li>
+          <li>Vlasy lze umýt téhož dne po aplikaci</li>
+          <li>Pro aplikaci je potřeba méně produktu</li>
+          <li>Žádné výpary ani zápach</li>
+          <li>Vydrží až 4 měsíce</li>
+          <li>Narovnává vlasy</li>
+          <li>Redukuje nechtěný objem</li>
+          <li>Zkracuje dobu fénování</li>
+          <li>Výrazně zlepšuje upravitelnost vlasů</li>
+          <li>Vhodné pro všechny typy vlasů</li>
+          <li>Ideální pro chemicky ošetřené vlasy</li>
+          <li>Splňuje zdravotní normy EU</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn">
+        Co je keratin a odkud pochází?
+      </button>
+      <div class="accordion-content">
+        <p>
+          Keratin je extrémně silný protein, který je hlavní složkou pokožky, vlasů a nehtů.
+          Hydrolyzovaný keratin je svým složením velmi blízký lidskému vlasu.
+          Získává se z přírodních ingrediencí.
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn">
+        Jak dlouho trvá aplikace?
+      </button>
+      <div class="accordion-content">
+        <p>
+          Čas potřebný k ošetření závisí na délce a síle vlasů.
+          Procedura trvá průměrně 2 hodiny.
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn">
+        Jak dlouho vydrží keratinové ošetření ve vlasech?
+      </button>
+      <div class="accordion-content">
+        <p>
+          Ošetření vydrží až 4 měsíce v závislosti, jak budete o vlasy následně pečovat.
+          Doporučujeme Vám používat Beox výrobky pro domácí péči s obsahem keratinu
+          a bez obsahu chloridu sodného a sulfátů.
+          Ošetření vydrží déle ve vlasech, které byly chemicky ošetřeny nebo jsou velmi porézní.
+          Ve vlasech, které nebyly nikdy chemicky ošetřené,
+          vydrží ošetření déle až po druhém až třetím ošetření.
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn">
+        Kdy nejdříve si můžu po aplikaci vlasy umýt? Musím se o ně specificky starat?
+      </button>
+      <div class="accordion-content">
+        <p>
+          Vlasy si můžete umýt již 24 hodin po ošetření.
+          Do prvního mytí nepoužívejte žádné stylingové přípravky,
+          nechte vlasy rozpuštěné a nedávejte je za uši.
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn">
+        Existují nějaká doporučení pro domácí péči?
+      </button>
+      <div class="accordion-content">
+        <p>
+          Ano, je důležité, aby jste používali BEOX produkty pro domácí péči
+          s keratinem a bez obsahu chloridu sodného a sulfátů.
+          To zajistí dlouhotrvající výsledek.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Naše <span>práce</span></h2>
+
+    <div class="gallery">
+
+  <div class="img-wrapper">
+    <img src="uces1.jpg" alt="Účes 1" loading="lazy">
+  </div>
+
+  <div class="img-wrapper">
+    <img src="uces2.jpg" alt="Účes 2" loading="lazy">
+  </div>
+
+   <div class="img-wrapper">
+    <img src="uces4.jpg" alt="Účes 4" loading="lazy">
+  </div>
+
+  <div class="img-wrapper">
+    <img src="uces5.jpg" alt="Účes 5" loading="lazy">
+  </div>
+
+  <div class="img-wrapper">
+    <img src="uces6.jpg" alt="Účes 6" loading="lazy">
+  </div>
+
+  <div class="img-wrapper">
+    <img src="uces7.jpg" alt="Účes 7" loading="lazy">
+  </div>
+
+  <div class="img-wrapper">
+    <img src="uces8.jpg" alt="Účes 8" loading="lazy">
+  </div>
+
+  <div class="img-wrapper">
+    <img src="uces10.jpg" alt="Účes 10" loading="lazy">
+  </div>
+
+</div>
+
+  </section>
+
+  <!-- Prices -->
+  <section id="prices">
+  <h2>C<span>eník</span></h2>
+
+  <!-- Tabs -->
+  <div class="price-tabs">
+    <button class="tab-btn active" data-tab="women">Ženy</button>
+    <button class="tab-btn" data-tab="men">Muži</button>
+    <button class="tab-btn" data-tab="kids">Děti</button>
+    <button class="tab-btn" data-tab="keratin">Keratin</button>
+  </div>
+
+  <!-- Obsah -->
+  <div class="price-content active" id="women">
+    <div class="price-item"><span>Dámský střih</span><span>650 Kč</span></div>
+    <div class="price-item"><span>Barvení</span><span>od 900 Kč</span></div>
+    <div class="price-item"><span>Foukaná</span><span>350 Kč</span></div>
+  </div>
+
+  <div class="price-content" id="men">
+    <div class="price-item"><span>Pánský střih</span><span>450 Kč</span></div>
+    <div class="price-item"><span>Úprava vousů</span><span>200 Kč</span></div>
+    <div class="price-item"><span>Mytí + styling</span><span>150 Kč</span></div>
+  </div>
+
+  <div class="price-content" id="kids">
+    <div class="price-item"><span>Dětský střih</span><span>300 Kč</span></div>
+    <div class="price-item"><span>Dívčí střih</span><span>350 Kč</span></div>
+  </div>
+
+  <div class="price-content" id="keratin">
+    <div class="price-item"><span>Krátké vlasy</span><span>1500 Kč</span></div>
+    <div class="price-item"><span>Polodlouhé vlasy</span><span>2000 Kč</span></div>
+    <div class="price-item"><span>Dlouhé vlasy</span><span>2500 Kč</span></div>
+  </div>
+</section>
+
+  <!-- Contact -->
+  <section id="contact">
+  <div class="contact-bg">
+    <div class="contact-inner">
+
+      <h2 class="contact-title">
+        Kontaktujte <span>nás</span>
+      </h2>
+
+      <div class="contact-grid">
+
+        <!-- LEVÁ STRANA -->
+        <div class="contact-info">
+
+          <p class="contact-name">KADEŘNICTVÍ MIRKA</p>
+          <p class="contact-person">Mirka Tušínská</p>
+
+          <div class="contact-item contact-row">
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2C8 2 5 5 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+  </svg>
+  <div>
+    <strong>Adresa:</strong><br>
+    Ruská 1405/9<br>
+    470 01 Česká Lípa
+  </div>
+</div>
+
+          <div class="contact-item contact-row">
+  <svg viewBox="0 0 24 24">
+    <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.1-.21c1.2.48 2.5.74 3.85.74a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C9.94 21 3 14.06 3 6a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.35.26 2.65.74 3.85a1 1 0 0 1-.21 1.1l-2.2 2.2z"/>
+  </svg>
+  <div>
+    <strong>Telefon:</strong><br>
+    <a href="tel:+420732264785">+420 732 264 785</a>
+  </div>
+</div>
+
+          <div class="contact-item contact-row">
+  <svg viewBox="0 0 24 24">
+    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+  </svg>
+  <div>
+    <strong>Email:</strong><br>
+    <a href="mailto:mirka-ucesy@seznam.cz">mirka-ucesy@seznam.cz</a>
+  </div>
+</div>
+
+        </div>
+
+        <!-- PRAVÁ STRANA -->
+        <div class="contact-form-box">
+
+         <h3 class="form-title">Napište nám</h3>
+          <form class="contact-form" onsubmit="sendForm(event)" novalidate>
+
+            <input type="text" id="name" placeholder="Jméno" required>
+            <span class="error-msg">Zadejte prosím Vaše jméno</span>
+
+            <input type="tel" id="phone" placeholder="Telefon" required>
+            <span class="error-msg">Zadejte prosím telefon</span>
+
+            <input type="email" id="email" placeholder="E-mail" required>
+            <span class="error-msg">Zadejte prosím Váš e-mail</span>
+
+            <textarea id="message" placeholder="Zpráva" rows="4" required></textarea>
+            <span class="error-msg">Napište prosím zprávu</span>
+
+            <button type="submit">Odeslat zprávu</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- MAPA -->
+      <div class="map">
+        <iframe 
+          src="https://www.google.com/maps?q=Ruská+1405/9,+Česká+Lípa&output=embed"
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 ZajaIT | Všechna práva vyhrazena</p>
+  </footer>
+
+
+  <script>
+    function sendForm(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+
+      alert("Děkujeme za zprávu, " + name + "! Brzy se vám ozveme.");
+
+      e.target.reset();
+    }
+  </script>
+
+<script>
+  // Vybereme všechny sekce s h2
+  const sections = document.querySelectorAll('section');
+
+  // Vytvoříme Intersection Observer
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate'); // spustí CSS animaci
+        obs.unobserve(entry.target);          // jen jednou
+      }
+    });
+  }, { threshold: 0.3 }); // 30 % sekce musí být vidět
+
+  // Observujeme každou sekci
+  sections.forEach(section => observer.observe(section));
+</script>
+
+<script>
+  const textarea = document.getElementById("message");
+
+  textarea.addEventListener("input", autoResize);
+
+  function autoResize() {
+    this.style.height = "auto";                  // reset výšky
+    this.style.height = this.scrollHeight + "px"; // nastav podle obsahu
+  }
+
+  window.addEventListener("load", () => autoResize.call(textarea));
+</script>
+
+  <script>
+window.addEventListener('DOMContentLoaded', () => {
+
+  // ==== NOVÉ PRO SCROLL NA ZAČÁTEK NA MOBILU ====
+  if (window.innerWidth <= 768) { // jen pro mobil
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }
+  // ============================================
+
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  const body = document.body;
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const sections = document.querySelectorAll('section');
+
+  const preventScroll = (e) => e.preventDefault();
+
+  // --- Otevření / zavření hamburgeru ---
+  const toggleMenu = () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('show');
+    body.classList.toggle('menu-open');
+
+    if (body.classList.contains('menu-open')) {
+      window.addEventListener('touchmove', preventScroll, { passive: false });
+      window.addEventListener('wheel', preventScroll, { passive: false });
+    } else {
+      window.removeEventListener('touchmove', preventScroll);
+      window.removeEventListener('wheel', preventScroll);
+    }
+  };
+
+  hamburger.addEventListener('click', toggleMenu);
+
+  // --- Kliknutí na link v menu ---
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Odstraníme active ze všech odkazů
+      navLinks.forEach(a => a.classList.remove('active'));
+
+      // Přidáme active kliknutému odkazu jen pokud to není Úvod
+      if (link.getAttribute('href') !== '#home') {
+        e.currentTarget.classList.add('active');
+      }
+
+      // Zavření menu, pokud je otevřené
+      if (body.classList.contains('menu-open')) toggleMenu();
+    });
+  });
+
+  // --- Kliknutí mimo menu zavře ho ---
+  document.addEventListener('click', (e) => {
+    if (
+      body.classList.contains('menu-open') &&
+      !navMenu.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ) {
+      toggleMenu();
+    }
+  });
+
+  // --- Swipe gesta ---
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  window.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  });
+
+  window.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    // Swipe z levé strany doprava pro zavření menu
+    if (body.classList.contains('menu-open') && touchStartX < 100 && diffX > 50) {
+      toggleMenu();
+    }
+
+    // Swipe zdola nahoru (vertikální pohyb dolů -> nahoru)
+    if (body.classList.contains('menu-open') && diffY < -100) {
+      toggleMenu();
+    }
+  });
+
+  // --- Automatické zabarvování menu podle sekce jen pro mobil ---
+  if (window.innerWidth <= 768) {
+    const setActiveLinkMobile = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      // Pokud jsme úplně nahoře, žádný active
+      if (window.scrollY < 50) { // 50px tolerance
+        navLinks.forEach(link => link.classList.remove('active'));
+        return;
+      }
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          // Odstraníme active ze všech
+          navLinks.forEach(link => link.classList.remove('active'));
+
+          // Najdeme odpovídající odkaz podle href
+          const activeLink = document.querySelector(`.nav-menu a[href="#${section.id}"]`);
+          if (activeLink && section.id !== 'home') activeLink.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLinkMobile);
+    window.addEventListener('load', setActiveLinkMobile);
+  }
+
+ // --- Automatické zabarvování menu podle sekce pro desktop ---
+if (window.innerWidth > 768) {
+  const setActiveLinkDesktop = () => {
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+    // Pokud jsme úplně nahoře, žádný active
+    if (window.scrollY < 50) { // 50px tolerance
+      navLinks.forEach(link => link.classList.remove('active'));
+      return;
+    }
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      const activeLink = document.querySelector(`.nav-menu a[href="#${section.id}"]`);
+
+      // Ignorujeme Úvod (#home)
+      if (!activeLink || section.id === 'home') return;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        activeLink.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', setActiveLinkDesktop);
+  window.addEventListener('load', setActiveLinkDesktop);
+}
+
+});
+</script>
+
+<script>
+function sendForm(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  let valid = true;
+
+  const fields = form.querySelectorAll("input, textarea");
+
+  fields.forEach(field => {
+    if (field.hasAttribute("required") && !field.checkValidity()) {
+      field.classList.add("error");
+
+      // uloží původní placeholder
+      if (!field.dataset.placeholder) {
+        field.dataset.placeholder = field.placeholder;
+      }
+
+      // nastav chybovou hlášku jako placeholder
+      field.placeholder = field.nextElementSibling.textContent;
+
+      field.value = "";
+      valid = false;
+
+    } else {
+      field.classList.remove("error");
+
+      // vrátí původní placeholder
+      if (field.dataset.placeholder) {
+        field.placeholder = field.dataset.placeholder;
+      }
+    }
+  });
+
+  if (valid) {
+    const name = document.getElementById("name").value;
+    alert("Děkujeme za zprávu, " + name + "! Brzy se vám ozveme.");
+    form.reset();
+
+    // vrátí placeholdery po resetu
+    fields.forEach(field => {
+      field.classList.remove("error");
+
+      if (field.dataset.placeholder) {
+        field.placeholder = field.dataset.placeholder;
+      }
+    });
+  }
+}
+
+// odstranění chyby při psaní
+document.querySelectorAll(".contact-form input, .contact-form textarea")
+.forEach(field => {
+  field.addEventListener("input", () => {
+    field.classList.remove("error");
+
+    if (field.dataset.placeholder) {
+      field.placeholder = field.dataset.placeholder;
+    }
+  });
+});
+</script>
+
+<script>
+document.querySelectorAll(".accordion-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+  btn.classList.toggle("active");
+    const content = btn.nextElementSibling;
+
+    document.querySelectorAll(".accordion-content").forEach(c => {
+  if (c !== content) {
+    c.style.maxHeight = null;
+    c.previousElementSibling.classList.remove("active"); // 👈 přidané
+  }
+});
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
+</script>
+
+<script>
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    document.querySelectorAll(".price-content").forEach(c => c.classList.remove("active"));
+
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  });
+});
+</script>
+  
+</body>
+</html>
