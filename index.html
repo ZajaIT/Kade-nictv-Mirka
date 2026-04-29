@@ -1366,13 +1366,11 @@ section#contact {
   <script>
 window.addEventListener('DOMContentLoaded', () => {
 
-  // ==== NOVÉ PRO SCROLL NA ZAČÁTEK NA MOBILU ====
-  if (window.innerWidth <= 768) { // jen pro mobil
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-    window.scrollTo(0, 0);
-  }
+  if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.scrollTo(0, 0);
   // ============================================
 
   const hamburger = document.querySelector('.hamburger');
