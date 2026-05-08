@@ -352,6 +352,33 @@ header p {
 .gallery img-wrapper:hover::after {
   background: rgba(201, 161, 74, 0.25); 
 }
+    #certificates {
+  padding-top: 60px;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.certificate-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.certificate-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.certificate-item:hover img {
+  transform: scale(1.03);
+}
 
 
 .cosmetic-item img {
@@ -393,7 +420,7 @@ header p {
 .accordion-btn::after {
   content: "▶";
   position: absolute;
-  left: 10px;   /* 🔥 vlevo místo vpravo */
+  left: 10px;   
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.3s ease;
@@ -419,13 +446,11 @@ header p {
   padding: 15px 20px 20px 20px;
 }
 
-/* vnitřní obsah */
 .accordion-content ul,
 .accordion-content p {
   margin: 0;
 }
 
-/* přidej mezeru mezi řádky seznamu */
 .accordion-content li {
   margin-bottom: 8px;
 }
@@ -917,6 +942,10 @@ section#contact {
       .contact-person {
   text-align: center;
 }
+      .certificates-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
            
 }
 
@@ -1022,6 +1051,24 @@ section#contact {
   loading="lazy"
 >
   </div>
+</section>
+
+  <section id="certificates">
+
+  <h2>Odborná <span>školení</span></h2>
+
+  <div class="certificates-grid">
+
+    <div class="certificate-item">
+      <img src="certifikaty.jpeg" alt="Certifikáty" loading="lazy">
+    </div>
+
+    <div class="certificate-item">
+      <img src="hlava.jpeg" alt="Odborné školení" loading="lazy">
+    </div>
+
+  </div>
+
 </section>
 
 <section id="cosmetics">
