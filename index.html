@@ -409,6 +409,33 @@ header p {
 .interior-item:hover img {
   transform: scale(1.03);
 }
+    #vouchers {
+  padding-top: 60px;
+}
+
+.voucher-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.voucher-text {
+  flex: 1;
+}
+
+.voucher-image {
+  flex-shrink: 0;
+}
+
+.voucher-image img {
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  display: block;
+}
 
 
 .cosmetic-item img {
@@ -991,6 +1018,15 @@ section#contact {
 .interior-item.wide img {
   height: 180px;
 }
+      .voucher-wrapper {
+  flex-direction: column;
+  text-align: center;
+}
+
+.voucher-image img {
+  width: 100%;
+  max-width: 320px;
+}
            
 }
 
@@ -1038,6 +1074,7 @@ section#contact {
     <a href="#cosmetics">Kosmetika</a>
     <a href="#gallery">Galerie</a>
     <a href="#prices">Ceník</a>
+    <a href="#vouchers">Poukazy</a>
     <a href="#contact">Kontakt</a>
   </div>
 
@@ -1348,6 +1385,26 @@ section#contact {
     <span>700 - 1 000 Kč</span>
   </div>
 </div>
+</section>
+
+  <section id="vouchers">
+
+  <h2>Dárkové <span>poukazy</span></h2>
+
+  <div class="voucher-wrapper">
+
+    <div class="voucher-text">
+      <p>
+        SEM SI DOPLNÍŠ VLASTNÍ TEXT O POUKAZECH.
+      </p>
+    </div>
+
+    <div class="voucher-image">
+      <img src="darkove-poukazy.jpeg" alt="Dárkové poukazy" loading="lazy">
+    </div>
+
+  </div>
+
 </section>
 
   <section id="interior">
