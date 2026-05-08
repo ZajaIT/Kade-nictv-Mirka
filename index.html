@@ -433,10 +433,13 @@ header p {
 .interior-item:hover img {
   transform: scale(1.03);
 }
-    #vouchers {
-  padding: 80px 20px;
+   #vouchers {
   background: #5BC0DE;
-  max-width: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
     #vouchers h2 span {
   color: white;
@@ -446,13 +449,15 @@ header p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50px;
-  max-width: 1000px;
+  gap: 40px;
+  max-width: 900px;
   margin: auto;
 }
 
 .voucher-text {
   flex: 1;
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
 .voucher-image {
@@ -460,7 +465,7 @@ header p {
 }
 
 .voucher-image img {
-  width: 220px;
+  width: 180px;
   border-radius: 0;
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   display: block;
