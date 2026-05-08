@@ -583,7 +583,7 @@ header p {
 .price-content.active {
   display: block;
 }
-
+    
     .extra-prices {
   margin-top: 0;
   max-width: 600px;
@@ -617,24 +617,27 @@ section.animate h2 {
       border-bottom: 1px solid #eee;
       font-weight: 500;
     }
+    .price-content .price-item:last-child {
+  border-bottom: 2px solid #bdbdbd;
+}
 
 section#contact {
   margin: auto;
   padding: 0;
   scroll-margin-top: 56px;
 
-  position: relative; /* 🔥 důležité */
+  position: relative; 
 }
 
 .contact-bg {
   background: var(--gold);
   max-width: 1100px;
-  margin: -20px auto -20px auto; /* 👈 důležité */
+  margin: -20px auto -20px auto; 
   padding: 60px 20px;
 
   border-radius: 8px;
   position: relative;
-  z-index: 2; /* 👈 zůstane nad footerem */
+  z-index: 2; 
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
@@ -755,13 +758,13 @@ section#contact {
   background: white;
   border: none;
   color: #000;
-  padding: 12px 25px;   /* 👈 menší a hezčí poměr */
+  padding: 12px 25px;   
   cursor: pointer;
   font-weight: 600;
   border-radius: 5px;
   transition: all 0.3s ease;
 
-  width: auto;          /* 👈 klíčové */
+  width: auto;         
   align-self: center;
 }
 
@@ -805,9 +808,9 @@ section#contact {
   background: var(--dark);
   color: white;
   text-align: center;
-  padding: 60px 20px 20px; /* 👈 víc prostoru nahoře */
+  padding: 60px 20px 20px; 
   font-size: 0.9rem;
-  margin-top: -20px;  /* 👈 posune footer pod box */
+  margin-top: -20px;  
   position: relative;
   z-index: 1;
 }
@@ -859,9 +862,9 @@ section#contact {
 .contact-inner .contact-row svg {
   width: 20px;
   height: 20px;
-  fill: #000; /* černé */
+  fill: #000; 
   flex-shrink: 0;
-  margin-top: 3px; /* jemné doladění */
+  margin-top: 3px; 
 }
     .opening-hours {
   font-size: 0.92rem;
@@ -875,21 +878,21 @@ section#contact {
   }
 
   nav {
-    padding: 30px 0; /* výška pruhu */
+    padding: 30px 0; 
   }
 
   .nav-phone {
-    display: none; /* telefon zmizí jen na mobilu */
+    display: none; 
   }
 
   /* Mobilní menu */
   .nav-menu {
     flex-direction: column;
     display: flex;
-    align-items: center;        /* položky horizontálně uprostřed */
-    justify-content: center;    /* vertikálně uprostřed */
-    padding-top: 20px;          /* prostor nad Úvod */
-    padding-bottom: 20px;       /* prostor pod Kontakt */
+    align-items: center;        
+    justify-content: center;    
+    padding-top: 20px;          
+    padding-bottom: 20px;       
     background: white;
     position: absolute;
     top: 56px;
@@ -913,7 +916,7 @@ section#contact {
     width: 100%;
   }
 
-  /* Úvod – aktivní barva nechceme, jen hover */
+  
   .nav-menu a[href="#home"] {
     color: var(--dark);
   }
@@ -922,12 +925,12 @@ section#contact {
     color: var(--gold);
   }
 
-  /* Ostatní položky aktivní */
+  
   .nav-menu a:not([href="#home"]).active {
     color: var(--gold);
   }
 
-  /* Hamburger ikona */
+  
   .hamburger {
     display: flex;
     position: absolute;
@@ -961,18 +964,18 @@ section#contact {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  /* Sociální ikony – mobil */
+  
   .nav-social {
     left: 15px;
     top: 50%;
     transform: translateY(-40%);
   }
 
-  .nav-social a:nth-child(1) svg { width: 30px; height: 30px; } /* Facebook */
-  .nav-social a:nth-child(2) svg { width: 24px; height: 24px; } /* Instagram */
-  .nav-social a:nth-child(3) svg { width: 24px; height: 24px; } /* WhatsApp */
+  .nav-social a:nth-child(1) svg { width: 30px; height: 30px; } 
+  .nav-social a:nth-child(2) svg { width: 24px; height: 24px; } 
+  .nav-social a:nth-child(3) svg { width: 24px; height: 24px; } 
 
-  /* Header pozice pro mobil */
+  
   header {
     background-position: center top;
     margin-top: -50px;
@@ -984,7 +987,7 @@ section#contact {
   }
 
 #about {
-  margin-top: -40px; /* menší overlap na mobilu */
+  margin-top: -40px; 
 }
 
 .gallery {
@@ -1001,7 +1004,7 @@ section#contact {
 .nav-phone {
   display: block;
   position: absolute;
-  left: 15px;         /* stejné místo jako social */
+  left: 15px;         
   top: 50%;
   transform: translateY(-40%);
 }
@@ -1607,8 +1610,8 @@ section#contact {
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate'); // spustí CSS animaci
-        obs.unobserve(entry.target);          // jen jednou
+        entry.target.classList.add('animate'); 
+        obs.unobserve(entry.target);          
       }
     });
   }, { threshold: 0.3 }); // 30 % sekce musí být vidět
@@ -1623,8 +1626,8 @@ section#contact {
   textarea.addEventListener("input", autoResize);
 
   function autoResize() {
-    this.style.height = "auto";                  // reset výšky
-    this.style.height = this.scrollHeight + "px"; // nastav podle obsahu
+    this.style.height = "auto";                  
+    this.style.height = this.scrollHeight + "px"; 
   }
 
   window.addEventListener("load", () => autoResize.call(textarea));
