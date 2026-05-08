@@ -391,38 +391,28 @@ header p {
   gap: 20px;
 }
 
-.interior-wide {
-  grid-column: 1 / -1;
+.interior-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.interior-item {
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
-.interior-wide img {
+.interior-item img {
   width: 100%;
-  height: 500px;
+  height: 420px;
   object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
 
-.interior-small {
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-.interior-small img {
-  width: 100%;
-  height: 420px;
-  object-fit: contain;
-  background: #fff;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.interior-wide:hover img,
-.interior-small:hover img {
+.interior-item:hover img {
   transform: scale(1.03);
 }
 
@@ -1366,21 +1356,19 @@ section#contact {
 
   <div class="interior-gallery">
 
-    <!-- velká horní fotka -->
-    <div class="interior-wide">
-      <img src="interier3.jpg" alt="Interiér salonu" loading="lazy">
-    </div>
-
-    <!-- spodní dvě -->
-    <div class="interior-small">
-      <img src="interier1.jpeg" alt="Salon interiér 1" loading="lazy">
-    </div>
-
-    <div class="interior-small">
-      <img src="interier2.jpeg" alt="Salon interiér 2" loading="lazy">
-    </div>
-
+  <div class="interior-item">
+    <img src="interier1.jpeg" alt="Salon interiér 1" loading="lazy">
   </div>
+
+  <div class="interior-item wide">
+    <img src="interier3.jpg" alt="Interiér salonu" loading="lazy">
+  </div>
+
+  <div class="interior-item">
+    <img src="interier2.jpeg" alt="Salon interiér 2" loading="lazy">
+  </div>
+
+</div>
 
 </section>
   <!-- Contact -->
