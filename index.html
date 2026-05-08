@@ -415,7 +415,8 @@ header p {
 .interior-small img {
   width: 100%;
   height: 420px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -997,7 +998,8 @@ section#contact {
 
   .interior-wide img,
   .interior-small img {
-    height: auto;
+    height: 240px;
+    object-fit: cover;
   }
            
 }
