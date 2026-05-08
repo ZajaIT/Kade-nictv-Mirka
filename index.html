@@ -760,6 +760,9 @@ section#contact {
   flex-shrink: 0;
   margin-top: 3px; /* jemné doladění */
 }
+    .opening-hours {
+  font-size: 0.92rem;
+}
 
     @media (max-width: 768px) {
 
@@ -888,12 +891,10 @@ section#contact {
 .contact-grid {
     grid-template-columns: 1fr;
   }
-      /* 🔥 MOBIL: schovat Facebook */
 .nav-social a {
   display: none;
 }
 
-/* 🔥 MOBIL: zobrazit telefon místo něj */
 .nav-phone {
   display: block;
   position: absolute;
@@ -1310,11 +1311,14 @@ section#contact {
   </svg>
 
   <div>
-    <strong>Otevírací doba:</strong><br>
-    pondělí - úterý: dle objednávky<br>
-    středa - pátek: 9:00 - 17:00<br>
-    sobota: dle objednávky
-  </div>
+  <strong>Otevírací doba:</strong><br>
+
+  <span class="opening-hours">
+    Pondělí - úterý: dle objednávky<br>
+    Středa - pátek: 9:00 - 17:00<br>
+    Sobota: dle objednávky
+  </span>
+</div>
 </div>
 
         </div>
