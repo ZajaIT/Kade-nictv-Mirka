@@ -778,6 +778,12 @@ section#contact {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
+    #form-message {
+  margin-top: 15px;
+  font-weight: 600;
+  text-align: center;
+  min-height: 24px;
+}
 
 .contact-form input:focus,
 .contact-form textarea:focus,
@@ -1630,6 +1636,7 @@ section#contact {
             <span class="error-msg">Napište prosím zprávu</span>
 
             <button type="submit">Odeslat zprávu</button>
+            <p id="form-message"></p>
           </form>
         </div>
 
@@ -1919,7 +1926,12 @@ async function sendForm(e) {
 
       const name = document.getElementById("name").value;
 
-      alert("Děkujeme za zprávu, " + name + "! Brzy se vám ozveme.");
+      const formMessage = document.getElementById("form-message");
+
+formMessage.textContent =
+  "Děkuji za zprávu. Brzy se Vám ozvu.";
+
+formMessage.style.color = "#222";
 
       form.reset();
 
@@ -1935,13 +1947,19 @@ async function sendForm(e) {
 
     } else {
 
-      alert("Odeslání se nepodařilo.");
+      formMessage.textContent =
+  "Odeslání se nepodařilo. Zkuste to prosím znovu.";
+
+formMessage.style.color = "#b00020";
 
     }
 
   } catch (error) {
 
-    alert("Došlo k chybě připojení.");
+   formMessage.textContent =
+  "Došlo k chybě připojení.";
+
+formMessage.style.color = "#b00020";
 
   }
 }
