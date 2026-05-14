@@ -1608,18 +1608,24 @@ section#contact {
         <div class="contact-form-box">
 
          <h3 class="form-title">Napište mi</h3>
-          <form class="contact-form" onsubmit="sendForm(event)" novalidate>
+          <form 
+  class="contact-form"
+  action="https://formspree.io/f/mzdoqyqg"
+  method="POST"
+  onsubmit="sendForm(event)"
+  novalidate
+>
 
-            <input type="text" id="name" placeholder="Jméno" required>
+            <input type="text" id="name" name="name" placeholder="Jméno" required>
             <span class="error-msg">Zadejte prosím Vaše jméno</span>
 
-            <input type="tel" id="phone" placeholder="Telefon" required>
+           <input type="tel" id="phone" name="phone" placeholder="Telefon" required>
             <span class="error-msg">Zadejte prosím telefon</span>
 
-            <input type="email" id="email" placeholder="E-mail" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
             <span class="error-msg">Zadejte prosím Váš e-mail</span>
 
-            <textarea id="message" placeholder="Zpráva" rows="4" required></textarea>
+            <textarea id="message" name="message" placeholder="Zpráva" rows="4" required></textarea>
             <span class="error-msg">Napište prosím zprávu</span>
 
             <button type="submit">Odeslat zprávu</button>
@@ -1861,7 +1867,8 @@ if (window.innerWidth > 768) {
 </script>
 
 <script>
-function sendForm(e) {
+async function sendForm(e) {
+
   e.preventDefault();
 
   const form = e.target;
@@ -1870,59 +1877,90 @@ function sendForm(e) {
   const fields = form.querySelectorAll("input, textarea");
 
   fields.forEach(field => {
+
     if (field.hasAttribute("required") && !field.checkValidity()) {
+
       field.classList.add("error");
 
-      // uloží původní placeholder
       if (!field.dataset.placeholder) {
         field.dataset.placeholder = field.placeholder;
       }
 
-      // nastav chybovou hlášku jako placeholder
       field.placeholder = field.nextElementSibling.textContent;
 
       field.value = "";
+
       valid = false;
 
     } else {
+
       field.classList.remove("error");
 
-      // vrátí původní placeholder
       if (field.dataset.placeholder) {
         field.placeholder = field.dataset.placeholder;
       }
     }
   });
 
-  if (valid) {
-    const name = document.getElementById("name").value;
-    alert("Děkujeme za zprávu, " + name + "! Brzy se vám ozveme.");
-    form.reset();
+  if (!valid) return;
 
-    // vrátí placeholdery po resetu
-    fields.forEach(field => {
-      field.classList.remove("error");
+  try {
 
-      if (field.dataset.placeholder) {
-        field.placeholder = field.dataset.placeholder;
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json"
       }
     });
+
+    if (response.ok) {
+
+      const name = document.getElementById("name").value;
+
+      alert("Děkujeme za zprávu, " + name + "! Brzy se vám ozveme.");
+
+      form.reset();
+
+      fields.forEach(field => {
+
+        field.classList.remove("error");
+
+        if (field.dataset.placeholder) {
+          field.placeholder = field.dataset.placeholder;
+        }
+
+      });
+
+    } else {
+
+      alert("Odeslání se nepodařilo.");
+
+    }
+
+  } catch (error) {
+
+    alert("Došlo k chybě připojení.");
+
   }
 }
 
 // odstranění chyby při psaní
 document.querySelectorAll(".contact-form input, .contact-form textarea")
 .forEach(field => {
+
   field.addEventListener("input", () => {
+
     field.classList.remove("error");
 
     if (field.dataset.placeholder) {
       field.placeholder = field.dataset.placeholder;
     }
+
   });
+
 });
 </script>
-
 <script>
 document.querySelectorAll(".accordion-btn").forEach(btn => {
   btn.addEventListener("click", () => {
