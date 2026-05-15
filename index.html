@@ -371,6 +371,39 @@ header p {
 .gallery img-wrapper:hover::after {
   background: rgba(201, 161, 74, 0.25); 
 }
+
+    /* Plážová ondulace */
+
+#beach-perm {
+  max-width: 1400px;
+  padding: 80px 20px;
+}
+
+.beach-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.beach-item {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 2 / 3;
+}
+
+.beach-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.35s ease;
+}
+
+.beach-item:hover img {
+  transform: scale(1.05);
+}
+    
     #certificates {
   padding-top: 60px;
 }
@@ -1137,6 +1170,10 @@ section#contact {
 .footer-designed {
   font-size: 0.8rem;
 }
+
+      .beach-gallery {
+  grid-template-columns: 1fr;
+}
            
 }
 
@@ -1546,6 +1583,32 @@ section#contact {
 </div>
 
 </div>
+</section>
+
+  <section id="beach-perm">
+
+  <h2>Trvalá plážová <span>ondulace</span></h2>
+
+    <div class="beach-gallery">
+
+  <div class="beach-item">
+    <img src="pred.png" alt="Před úpravou" loading="lazy">
+  </div>
+
+  <div class="beach-item">
+    <img src="natacky.png" alt="Natáčky" loading="lazy">
+  </div>
+
+  <div class="beach-item">
+    <img src="mokrevlasy.png" alt="Mokré vlasy" loading="lazy">
+  </div>
+
+  <div class="beach-item">
+    <img src="trvalaplazova.png" alt="Plážová ondulace" loading="lazy">
+  </div>
+
+</div>
+
 </section>
 
   <section id="vouchers">
